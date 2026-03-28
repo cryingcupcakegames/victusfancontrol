@@ -7,7 +7,7 @@ pip install pythonnet nvidia-ml-py
 https://github.com/OmenMon/OmenMon/releases  
 https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases  
   
-Also, you should change OMENMON_PATH and LHM_DLL_PATH in py file.  
+Also, you should change OMENMON_PATH and LHM_DLL_PATH in py file. You can also adjust the fan steps and other options there.  
 
 You can add it to startup using a batch file with code similar to this:  
 cd "C:\Users\user\Documents\Programs\victusfancontrol"  
