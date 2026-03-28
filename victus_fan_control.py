@@ -79,6 +79,9 @@ def get_step_speed(temp):
     for threshold in sorted(FAN_STEPS.keys(), reverse=True):
         if temp >= threshold:
             return FAN_STEPS[threshold]
+    # instead of returning 0, return the lowest fan step if temp >= FAN_STOP_TEMP
+    if temp >= FAN_STOP_TEMP:
+        return FAN_STEPS[min(FAN_STEPS.keys())]
     return 0
 
 last_applied_speed = -1
