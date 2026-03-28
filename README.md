@@ -1,4 +1,4 @@
-This has been tested on an Victus Gaming Laptop 16-s0051nt (892P9EA)  
+This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)  
 My system has an NVIDIA GPU and an AMD CPU. Because the code is made for this specific hardware, it may not work on other systems without modifications.  
   
 Requirements:  
