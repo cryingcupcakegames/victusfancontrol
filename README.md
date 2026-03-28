@@ -26,9 +26,7 @@ https://cryingcupcakegames.github.io/
   
 Support My Work:  
 https://buymeacoffee.com/cryingcupcakegames  
-    
-    
+  
+This repository is provided on an "as-is" basis without any warranties, either expressed or implied. By using the content within, you acknowledge and agree that you are doing so entirely at your own risk.  
+  
 #HpOwnUpToYourHallSensorDefects  
-    
-    
-This repository is provided on an "as-is" basis without any warranties, either expressed or implied. By using the content within, you acknowledge and agree that you are doing so entirely at your own risk.
