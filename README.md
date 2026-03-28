@@ -15,6 +15,9 @@ You can add it to startup using a batch file with code similar to this:
 cd "C:\Users\user\Documents\Programs\victusfancontrol"  
 start "" pythonw omen_fan_control.py  
 
+SpeedFan can be very useful for checking whether it is working, but it isn’t guaranteed to display accurate temperatures or fan RPM. It’s the best tool I’ve found for this laptop model:
+https://www.almico.com/sfdownload.php
+
 Take a look at my other projects, including games and apps:   
 https://cryingcupcakegames.github.io/  
   
