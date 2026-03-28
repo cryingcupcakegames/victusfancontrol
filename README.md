@@ -8,3 +8,9 @@ https://github.com/OmenMon/OmenMon/releases
 https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases  
   
 Also, you should change OMENMON_PATH and LHM_DLL_PATH in py file.  
+
+Take a look at my other projects, including games and apps: 
+https://cryingcupcakegames.github.io/  
+  
+Support My Work: 
+https://buymeacoffee.com/cryingcupcakegames  
