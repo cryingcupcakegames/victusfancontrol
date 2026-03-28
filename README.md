@@ -1,4 +1,4 @@
-I made this program because of the Hall effect sensor problem. I removed the ribbon cable from the Hall effect board, and after that, I noticed my fans were not working properly. I tried using Omen Gaming Hub's custom fan curve, but the app was also very problematic and unstable. It once used over 20GB of RAM with high CPU usage and kept crashing. Omenmon didn't work directly with my laptop too.
+I made this because the Hall effect sensor problem. After removing the ribbon cable from the Hall effect board, I noticed my fans were not working properly. I tried using Omen Gaming Hub's custom fan curve, but the app was unstable and problematic. It sometimes used all of the RAM, likely due to a memory leak. Additionally, the app caused high CPU usage and frequent crashes. Omenmon also didn’t work directly with my laptop.
 
 This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)  
 My system has an NVIDIA GPU and an AMD CPU. Because the code is made for this specific hardware, it may not work on other systems without modifications.  
