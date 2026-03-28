@@ -8,8 +8,8 @@ Requirements:
 Python 3.13.0  
 pip install pythonnet nvidia-ml-py  
 https://github.com/OmenMon/OmenMon/releases  
+(Replace OmenMon.xml file with my version)  
 https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases  
-Replace OmenMon.xml file  
   
 You should change OMENMON_PATH and LHM_DLL_PATH in the Python file. You can change the fan steps and other options there as well.
 You should start it with pythonw. Otherwise, it will give errors when creating silent subprocesses.
@@ -29,3 +29,6 @@ https://buymeacoffee.com/cryingcupcakegames
   
   
 #HpOwnUpToYourHallSensorDefects  
+  
+  
+This repository is provided on an "as-is" basis without any warranties, either expressed or implied. By using the content within, you acknowledge and agree that you are doing so entirely at your own risk.
