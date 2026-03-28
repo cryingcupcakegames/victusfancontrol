@@ -11,7 +11,7 @@ LHM_DLL_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\LibreHardware
 
 # FAN BEHAVIOR
 FAN_START_TEMP = 40
-FAN_STOP_TEMP  = 40
+FAN_STOP_TEMP  = 35
 
 #default omen gaming hub values
 #50 31
