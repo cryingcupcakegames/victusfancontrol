@@ -5,7 +5,7 @@ My system has an NVIDIA GPU and an AMD CPU. Because the code is made for this sp
 Optimized for silent browsing and smooth gaming performance with minimal OmenMon calls. My laptop’s fans don’t work below 18% speed. If you experience issues, adjust the fan curve.  
   
 Requirements:  
-Python 3.13.0  
+Python 3.13.0: https://www.python.org/downloads/release/python-3130/  
 pip install pythonnet nvidia-ml-py  
 https://github.com/OmenMon/OmenMon/releases  
 (Replace OmenMon.xml file with my version)  
