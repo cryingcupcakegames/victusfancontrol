@@ -1,5 +1,4 @@
-I made this program because of a Hall effect sensor problem. I removed the ribbon cable from the Hall effect board, and after that, I noticed my fans were not working properly. I tried using Omen Gaming Hub's custom fan curve, but the app was also very problematic. It once used over 20GB of RAM with high CPU usage and kept crashing, making it unstable.  
-#HpOwnUpToYourHallSensorDefects  
+I made this program because of a Hall effect sensor problem. I removed the ribbon cable from the Hall effect board, and after that, I noticed my fans were not working properly. I tried using Omen Gaming Hub's custom fan curve, but the app was also very problematic. It once used over 20GB of RAM with high CPU usage and kept crashing, making it unstable. Omenmon didn't work directly with my laptop too.
 
 This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)  
 My system has an NVIDIA GPU and an AMD CPU. Because the code is made for this specific hardware, it may not work on other systems without modifications.  
@@ -21,3 +20,6 @@ https://cryingcupcakegames.github.io/
   
 Support My Work:  
 https://buymeacoffee.com/cryingcupcakegames  
+  
+  
+#HpOwnUpToYourHallSensorDefects  
