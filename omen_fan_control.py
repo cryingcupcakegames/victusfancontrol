@@ -6,8 +6,8 @@ from pynvml import *
 # ==========================================
 # CONFIGURATION
 # ==========================================
-OMENMON_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\OmenMon-0.58.0-Release\OmenMon.exe"
-LHM_DLL_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\LibreHardwareMonitor\LibreHardwareMonitorLib.dll"
+OMENMON_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\OmenMon-0.61.1-Release\OmenMon.exe"
+LHM_DLL_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\LibreHardwareMonitor-0.9.6\LibreHardwareMonitorLib.dll"
 
 # FAN BEHAVIOR
 FAN_START_TEMP = 40
