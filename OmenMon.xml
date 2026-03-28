@@ -13,7 +13,7 @@
         <!-- Automatically apply settings on start -->
         <AutoConfig>false</AutoConfig>
         <!-- Automatically start up with Windows -->
-        <AutoStartup>true</AutoStartup>
+        <AutoStartup>false</AutoStartup>
         <!-- Ignore BIOS errors if false (for not fully compatible devices) -->
         <BiosErrorReporting>false</BiosErrorReporting>
         <!-- Color Backlight -->
