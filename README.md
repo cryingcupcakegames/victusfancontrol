@@ -9,6 +9,10 @@ https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases
   
 Also, you should change OMENMON_PATH and LHM_DLL_PATH in py file.  
 
+You can add it to startup using a batch file with code similar to this:
+cd "C:\Users\user\Documents\Programs\victusfancontrol"
+start "" pythonw omen_fan_control.py
+
 Take a look at my other projects, including games and apps:   
 https://cryingcupcakegames.github.io/  
   
