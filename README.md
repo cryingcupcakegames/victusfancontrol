@@ -2,6 +2,7 @@ I made this program because of the Hall effect sensor problem. I removed the rib
 
 This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)  
 My system has an NVIDIA GPU and an AMD CPU. Because the code is made for this specific hardware, it may not work on other systems without modifications.  
+Optimized for silent browsing and smooth gaming performance with minimal OmenMon calls. My laptop’s fans don’t work below 18% speed. If you experience issues, adjust the fan curve.  
   
 Requirements:  
 Python 3.13.0  
