@@ -86,7 +86,7 @@ last_change_time = 0
 drop_start_time = 0 
 
 if __name__ == "__main__":
-    print("--- OMEN Manual Step Controller (Final Stable) ---")
+    print("--- Victus Fan Control 1.0.0 ---")
     print("Waiting 20 seconds for Windows services...")
     time.sleep(20)
     
