@@ -18,6 +18,7 @@ Python 3.13.0: https://www.python.org/downloads/release/python-3130/<br>
 pip install pythonnet nvidia-ml-py<br>
 https://github.com/OmenMon/OmenMon/releases (Replace OmenMon.xml file with my version)<br>
 https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases
+https://pawnio.eu/ (Required for LibreHardwareMonitor)
 <br><br>
 You should change OMENMON_PATH and LHM_DLL_PATH in the Python file. You can change the fan steps and other options there as well.<br>
 You should start it with pythonw. Otherwise, it will give errors when creating silent subprocesses.<br>
