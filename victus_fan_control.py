@@ -41,7 +41,7 @@ FAN_STEPS = {
 POLLING_RATE = 2
 FAN_START_DELAY = 5
 FAN_STOP_COOLDOWN = 30
-SPIN_DOWN_DELAY = 15
+SPIN_DOWN_DELAY = 30
 KEEP_ALIVE_INTERVAL = 90 # Keeps fan alive
 URGENT_TEMP = 90
 # ==========================================
