@@ -30,5 +30,5 @@ https://www.almico.com/sfdownload.php
 <br><br>
 My Laptop Benchmarks - Before and After<br>
 <img src="https://cryingcupcakegames.github.io/victus_benchmark.png" width="400">
-<br><br>
-#HpOwnUpToYourHallSensorDefects  
+<br>
+#HpOwnUpToYourHallSensorDefects
