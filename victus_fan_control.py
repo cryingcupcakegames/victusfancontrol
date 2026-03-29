@@ -13,10 +13,6 @@ import sys
 OMENMON_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\OmenMon-0.61.1-Release\OmenMon.exe"
 LHM_DLL_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\LibreHardwareMonitor-0.9.6\LibreHardwareMonitorLib.dll"
 
-# FAN BEHAVIOR
-FAN_START_TEMP = 50
-FAN_STOP_TEMP  = 40
-
 #default omen gaming hub values
 #50 31
 #55 38
@@ -27,6 +23,10 @@ FAN_STOP_TEMP  = 40
 #80 59
 #85 64
 #90 67
+
+# FAN BEHAVIOR
+FAN_START_TEMP = 50
+FAN_STOP_TEMP  = 40
 
 FAN_STEPS = {
     40: 18,
@@ -42,7 +42,7 @@ POLLING_RATE = 2
 FAN_START_DELAY = 5
 FAN_STOP_COOLDOWN = 30
 SPIN_DOWN_DELAY = 30
-KEEP_ALIVE_INTERVAL = 90 # Keeps fan alive
+KEEP_ALIVE_INTERVAL = 110 #Keeps fan alive #Fans usually stop after 120 seconds
 URGENT_TEMP = 90
 # ==========================================
 
