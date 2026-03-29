@@ -1,7 +1,11 @@
+#Victus Fan Control 1.0.1
+#Copyright (C) 2026 Crying Cupcake Games - All Rights Reserved
 import subprocess
 import time
 import clr 
 from pynvml import *
+import ctypes
+import sys
 
 # ==========================================
 # CONFIGURATION
@@ -10,8 +14,8 @@ OMENMON_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\OmenMon-0.61.
 LHM_DLL_PATH = r"C:\Users\user\Documents\Programs\victusfancontrol\LibreHardwareMonitor-0.9.6\LibreHardwareMonitorLib.dll"
 
 # FAN BEHAVIOR
-FAN_START_TEMP = 40
-FAN_STOP_TEMP  = 35
+FAN_START_TEMP = 50
+FAN_STOP_TEMP  = 40
 
 #default omen gaming hub values
 #50 31
@@ -35,10 +39,11 @@ FAN_STEPS = {
 
 # TIMING
 POLLING_RATE = 3
-COOLDOWN_SECONDS = 10
+FAN_START_DELAY = 5
+FAN_STOP_COOLDOWN = 30
 SPIN_DOWN_DELAY = 15
-KEEP_ALIVE_INTERVAL = 90  # keeps fan alive
-
+KEEP_ALIVE_INTERVAL = 90 # Keeps fan alive
+URGENT_TEMP = 90
 # ==========================================
 
 clr.AddReference(LHM_DLL_PATH)
@@ -79,17 +84,34 @@ def get_step_speed(temp):
     for threshold in sorted(FAN_STEPS.keys(), reverse=True):
         if temp >= threshold:
             return FAN_STEPS[threshold]
-    # instead of returning 0, return the lowest fan step if temp >= FAN_STOP_TEMP
     if temp >= FAN_STOP_TEMP:
         return FAN_STEPS[min(FAN_STEPS.keys())]
     return 0
 
-last_applied_speed = -1
+last_applied_speed = 0
 last_change_time = 0
-drop_start_time = 0 
+
+start_delay_timer = 0
+stop_cooldown_timer = 0
+step_down_timer = 0
+
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except Exception:
+        return False
 
 if __name__ == "__main__":
-    print("--- Victus Fan Control 1.0.0 ---")
+    print("--- Victus Fan Control ---")
+
+    # Check for Admin rights
+    if not is_admin():
+        print("CRITICAL WARNING: Script is not running as Administrator!")
+        print("Please restart the script with elevated privileges.")
+        print("Exiting in 5 seconds...")
+        time.sleep(5)
+        sys.exit(1)
+
     print("Waiting 20 seconds for Windows services...")
     time.sleep(20)
     
@@ -97,19 +119,15 @@ if __name__ == "__main__":
         while True:
             current_time = time.time()
             
-            # =========================
-            # READ CPU TEMP
-            # =========================
+            # Read CPU
             cpu_raw = 0
             if cpu_hw:
                 cpu_hw.Update()
-                temps = [s.Value for s in cpu_hw.Sensors if s.SensorType == Hardware.SensorType.Temperature]
+                temps = [s.Value for s in cpu_hw.Sensors if s.SensorType == Hardware.SensorType.Temperature and s.Value is not None]
                 if temps:
                     cpu_raw = int(max(temps))
             
-            # =========================
-            # READ GPU TEMP (fallback = CPU)
-            # =========================
+            # Read GPU
             gpu_raw = cpu_raw
             if gpu_handle:
                 try:
@@ -119,37 +137,70 @@ if __name__ == "__main__":
 
             current_max = max(cpu_raw, gpu_raw)
 
-            # =========================
-            # FAILSAFE
-            # =========================
+            # Failsafe
             if current_max == 0 or current_max > 110:
                 target_speed = 100
-                drop_start_time = 0
-                print(f"WARNING: Sensor error ({current_max}°C)", end='\r')
-
+                start_delay_timer = 0
+                stop_cooldown_timer = 0
+                step_down_timer = 0
+                print(f"WARNING: Sensor error ({current_max}°C)        ", end='\r')
             else:
-                target_speed = get_step_speed(current_max)
+                raw_target_speed = get_step_speed(current_max)
 
-                # =========================
-                # HYSTERESIS
-                # =========================
+                # ==========================================
+                # STATE 1: FANS ARE CURRENTLY OFF
+                # ==========================================
                 if last_applied_speed == 0:
-                    if current_max < FAN_START_TEMP:
-                        target_speed = 0
-                else:
-                    if current_max <= FAN_STOP_TEMP:
+                    stop_cooldown_timer = 0
+                    step_down_timer = 0
+                    
+                    if current_max >= URGENT_TEMP:
+                        target_speed = raw_target_speed
+                        start_delay_timer = 0 
+                        
+                    elif current_max >= FAN_START_TEMP:
+                        if start_delay_timer == 0:
+                            start_delay_timer = current_time
+                            
+                        if (current_time - start_delay_timer) >= FAN_START_DELAY:
+                            target_speed = raw_target_speed
+                        else:
+                            target_speed = 0 
+                    else:
+                        start_delay_timer = 0
                         target_speed = 0
 
-                # =========================
-                # SPIN DOWN DELAY
-                # =========================
-                if target_speed < last_applied_speed and last_applied_speed != -1:
-                    if drop_start_time == 0:
-                        drop_start_time = current_time
-                    if (current_time - drop_start_time) < SPIN_DOWN_DELAY:
-                        target_speed = last_applied_speed
+                # ==========================================
+                # STATE 2: FANS ARE CURRENTLY ON
+                # ==========================================
                 else:
-                    drop_start_time = 0
+                    start_delay_timer = 0
+                    
+                    if current_max <= FAN_STOP_TEMP:
+                        step_down_timer = 0
+                        
+                        if stop_cooldown_timer == 0:
+                            stop_cooldown_timer = current_time
+                            
+                        if (current_time - stop_cooldown_timer) >= FAN_STOP_COOLDOWN:
+                            target_speed = 0
+                        else:
+                            target_speed = last_applied_speed
+                            
+                    else:
+                        stop_cooldown_timer = 0
+                        
+                        if raw_target_speed < last_applied_speed:
+                            if step_down_timer == 0:
+                                step_down_timer = current_time
+                                
+                            if (current_time - step_down_timer) >= SPIN_DOWN_DELAY:
+                                target_speed = raw_target_speed
+                            else:
+                                target_speed = last_applied_speed
+                        else:
+                            step_down_timer = 0
+                            target_speed = raw_target_speed
 
             # =========================
             # EXECUTION + KEEP ALIVE
@@ -163,11 +214,8 @@ if __name__ == "__main__":
                     last_applied_speed = target_speed
                     last_change_time = current_time
 
-            # =========================
-            # OUTPUT
-            # =========================
             if 0 < current_max <= 110:
-                print(f"CPU: {cpu_raw}°C | GPU: {gpu_raw}°C | Fan: {last_applied_speed}%   ", end='\r')
+                print(f"CPU: {cpu_raw}°C | GPU: {gpu_raw}°C | Fan: {last_applied_speed}%        ", end='\r')
 
             time.sleep(POLLING_RATE)
 
