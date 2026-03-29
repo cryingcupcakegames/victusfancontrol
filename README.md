@@ -22,6 +22,9 @@ start "" pythonw omen_fan_control.py
 SpeedFan can be very useful for checking whether it is working, but it isn’t guaranteed to display accurate temperatures or fan RPM. It’s the best tool I’ve found for this laptop model:
 https://www.almico.com/sfdownload.php
 <br><br>
+My Laptop Benchmarks - Before and After<br>
+<img src="https://cryingcupcakegames.github.io/victus_benchmark.png" width="400">
+<br>
 Take a look at my other projects, including games and apps:<br>
 https://cryingcupcakegames.github.io/  
 <br>
