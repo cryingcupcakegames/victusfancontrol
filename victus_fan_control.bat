@@ -1,0 +1,1 @@
+start "" pythonw victus_fan_control.py
