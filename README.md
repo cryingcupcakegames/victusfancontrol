@@ -6,7 +6,7 @@ https://cryingcupcakegames.github.io/
 <br>
 Support My Work:<br>
 https://buymeacoffee.com/cryingcupcakegames  
-<br>
+<br><br>
 I developed this because of the well-known hall effect sensor problem. After removing the ribbon cable from the hall effect board, I noticed my fans were not working properly. I tried using Omen Gaming Hub's custom fan curve, but the app was unstable and problematic. It sometimes used all of the RAM, likely due to a memory leak, and had high CPU usage with frequent crashes. Omenmon also didn't work directly with my laptop.
 <br><br>
 This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)<br>
