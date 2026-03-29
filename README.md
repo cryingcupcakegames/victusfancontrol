@@ -3,31 +3,29 @@
 </h2>
 I developed this because of the well-known hall effect sensor problem. After removing the ribbon cable from the hall effect board, I noticed my fans were not working properly. I tried using Omen Gaming Hub's custom fan curve, but the app was unstable and problematic. It sometimes used all of the RAM, likely due to a memory leak, and had high CPU usage with frequent crashes. Omenmon also didn't work directly with my laptop.
 <br><br>
-This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)  
-My system has an NVIDIA GPU and an AMD CPU. Because the code is made for this specific hardware, it may not work on other systems without modifications.  
-Optimized for silent browsing and smooth gaming performance with minimal OmenMon calls. My laptop’s fans don’t work below 18% speed. If you experience issues, adjust the fan curve.  
+This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)<br>
+My system has an NVIDIA GPU and an AMD CPU. Because the code is made for this specific hardware, it may not work on other systems without modifications.<br>
+Optimized for silent browsing and smooth gaming performance with minimal OmenMon calls. My laptop’s fans don’t work below 18% speed. If you experience issues, adjust the fan curve.
 <br><br>
-Requirements:  
-Python 3.13.0: https://www.python.org/downloads/release/python-3130/  
-pip install pythonnet nvidia-ml-py  
-https://github.com/OmenMon/OmenMon/releases  
-(Replace OmenMon.xml file with my version)  
-https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases  
+Requirements:<br>
+Python 3.13.0: https://www.python.org/downloads/release/python-3130/<br>
+pip install pythonnet nvidia-ml-py<br>
+https://github.com/OmenMon/OmenMon/releases (Replace OmenMon.xml file with my version)<br>
+https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases
 <br><br>
-You should change OMENMON_PATH and LHM_DLL_PATH in the Python file. You can change the fan steps and other options there as well.
-You should start it with pythonw. Otherwise, it will give errors when creating silent subprocesses.
-<br>
-You can add it to startup using a batch file with code similar to this:  
-cd "C:\Users\user\Documents\Programs\victusfancontrol"  
-start "" pythonw omen_fan_control.py  
+You should change OMENMON_PATH and LHM_DLL_PATH in the Python file. You can change the fan steps and other options there as well.<br>
+You should start it with pythonw. Otherwise, it will give errors when creating silent subprocesses.<br>
+You can add it to startup using a batch file with code similar to this:<br>
+cd "C:\Users\user\Documents\Programs\victusfancontrol"<br>
+start "" pythonw omen_fan_control.py
 <br><br>
 SpeedFan can be very useful for checking whether it is working, but it isn’t guaranteed to display accurate temperatures or fan RPM. It’s the best tool I’ve found for this laptop model:
 https://www.almico.com/sfdownload.php
 <br><br>
-Take a look at my other projects, including games and apps:   
+Take a look at my other projects, including games and apps:<br>
 https://cryingcupcakegames.github.io/  
 <br>
-Support My Work:  
+Support My Work:<br>
 https://buymeacoffee.com/cryingcupcakegames  
 <br><br>
 #HpOwnUpToYourHallSensorDefects  
