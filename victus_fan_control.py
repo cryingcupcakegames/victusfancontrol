@@ -1,5 +1,5 @@
-#Victus Fan Control 1.0.1
-#Copyright (C) 2026 Crying Cupcake Games - All Rights Reserved
+#Victus Fan Control 1.0.2
+#Copyright (C) 2026 Crying Cupcake Games
 import subprocess
 import time
 import clr 
@@ -38,7 +38,7 @@ FAN_STEPS = {
 }
 
 # TIMING
-POLLING_RATE = 3
+POLLING_RATE = 2
 FAN_START_DELAY = 5
 FAN_STOP_COOLDOWN = 30
 SPIN_DOWN_DELAY = 15
@@ -94,6 +94,7 @@ last_change_time = 0
 start_delay_timer = 0
 stop_cooldown_timer = 0
 step_down_timer = 0
+step_up_timer = 0
 
 def is_admin():
     try:
@@ -104,7 +105,6 @@ def is_admin():
 if __name__ == "__main__":
     print("--- Victus Fan Control ---")
 
-    # Check for Admin rights
     if not is_admin():
         print("CRITICAL WARNING: Script is not running as Administrator!")
         print("Please restart the script with elevated privileges.")
@@ -143,6 +143,7 @@ if __name__ == "__main__":
                 start_delay_timer = 0
                 stop_cooldown_timer = 0
                 step_down_timer = 0
+                step_up_timer = 0
                 print(f"WARNING: Sensor error ({current_max}°C)        ", end='\r')
             else:
                 raw_target_speed = get_step_speed(current_max)
@@ -153,6 +154,7 @@ if __name__ == "__main__":
                 if last_applied_speed == 0:
                     stop_cooldown_timer = 0
                     step_down_timer = 0
+                    step_up_timer = 0
                     
                     if current_max >= URGENT_TEMP:
                         target_speed = raw_target_speed
@@ -178,6 +180,7 @@ if __name__ == "__main__":
                     
                     if current_max <= FAN_STOP_TEMP:
                         step_down_timer = 0
+                        step_up_timer = 0
                         
                         if stop_cooldown_timer == 0:
                             stop_cooldown_timer = current_time
@@ -191,6 +194,7 @@ if __name__ == "__main__":
                         stop_cooldown_timer = 0
                         
                         if raw_target_speed < last_applied_speed:
+                            step_up_timer = 0
                             if step_down_timer == 0:
                                 step_down_timer = current_time
                                 
@@ -198,8 +202,25 @@ if __name__ == "__main__":
                                 target_speed = raw_target_speed
                             else:
                                 target_speed = last_applied_speed
+                                
+                        elif raw_target_speed > last_applied_speed:
+                            step_down_timer = 0
+                            
+                            if current_max >= URGENT_TEMP:
+                                target_speed = raw_target_speed
+                                step_up_timer = 0
+                            else:
+                                if step_up_timer == 0:
+                                    step_up_timer = current_time
+                                    
+                                if (current_time - step_up_timer) >= FAN_START_DELAY:
+                                    target_speed = raw_target_speed
+                                else:
+                                    target_speed = last_applied_speed
+                                    
                         else:
                             step_down_timer = 0
+                            step_up_timer = 0
                             target_speed = raw_target_speed
 
             # =========================
