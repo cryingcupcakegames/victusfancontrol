@@ -1,6 +1,12 @@
 <h2 align="center">
   <a href="https://cryingcupcakegames.github.io/"><img src="icon/victus_fan_control.png" width="36"/></a><span>&nbsp;</span><span>Victus Fan Control</span>
 </h2>
+Take a look at my other projects, including games and apps:<br>
+https://cryingcupcakegames.github.io/  
+<br>
+Support My Work:<br>
+https://buymeacoffee.com/cryingcupcakegames  
+<br>
 I developed this because of the well-known hall effect sensor problem. After removing the ribbon cable from the hall effect board, I noticed my fans were not working properly. I tried using Omen Gaming Hub's custom fan curve, but the app was unstable and problematic. It sometimes used all of the RAM, likely due to a memory leak, and had high CPU usage with frequent crashes. Omenmon also didn't work directly with my laptop.
 <br><br>
 This has only been tested on a Victus Gaming Laptop 16-s0051nt (892P9EA)<br>
@@ -24,11 +30,5 @@ https://www.almico.com/sfdownload.php
 <br><br>
 My Laptop Benchmarks - Before and After<br>
 <img src="https://cryingcupcakegames.github.io/victus_benchmark.png" width="400">
-<br>
-Take a look at my other projects, including games and apps:<br>
-https://cryingcupcakegames.github.io/  
-<br>
-Support My Work:<br>
-https://buymeacoffee.com/cryingcupcakegames  
 <br><br>
 #HpOwnUpToYourHallSensorDefects  
