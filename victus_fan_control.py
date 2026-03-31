@@ -49,18 +49,6 @@ URGENT_TEMP = 90
 clr.AddReference(LHM_DLL_PATH)
 from LibreHardwareMonitor import Hardware
 
-computer = Hardware.Computer()
-computer.IsCpuEnabled = True
-computer.Open()
-
-cpu_hw = next((hw for hw in computer.Hardware if hw.HardwareType == Hardware.HardwareType.Cpu), None)
-
-try:
-    nvmlInit()
-    gpu_handle = nvmlDeviceGetHandleByIndex(0)
-except:
-    gpu_handle = None
-
 def apply_fan_speed(cpu_val, gpu_val):
     si = subprocess.STARTUPINFO()
     si.dwFlags |= (0x00000001 | 0x00000080)
@@ -199,13 +187,24 @@ if __name__ == "__main__":
     print("Waiting 20 seconds for Windows services...")
     time.sleep(20)
     
+    computer = Hardware.Computer()
+    computer.IsCpuEnabled = True
+    computer.Open()
+    cpu_hw = next((hw for hw in computer.Hardware if hw.HardwareType == Hardware.HardwareType.Cpu), None)
+
+    try:
+        nvmlInit()
+        gpu_handle = nvmlDeviceGetHandleByIndex(0)
+    except:
+        gpu_handle = None
+    
     cpu_fan = FanController("CPU")
     gpu_fan = FanController("GPU")
     last_global_change_time = 0
     
     try:
         while True:
-            current_time = time.time()
+            current_time = time.monotonic()
             
             cpu_raw = 0
             if cpu_hw:
